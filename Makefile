@@ -21,7 +21,7 @@ depsdev:
 	go install github.com/k1LoW/gostyle@latest
 
 credits: depsdev
-	go mod download
+	go mod tidy
 	gocredits -w .
 
 prerelease_for_tagpr: credits
