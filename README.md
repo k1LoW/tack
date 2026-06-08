@@ -48,7 +48,7 @@ $ export TAILOR_PLATFORM_MACHINE_USER_CLIENT_SECRET=<client_secret>
 $ tack up ./dist --workspace-id <WORKSPACE_ID>
 ```
 
-When both variables are set, `tack` skips the SDK config entirely and fetches an access token via the OAuth2 `client_credentials` grant. Otherwise the user-mode SDK config flow above is used.
+When either variable is present, `tack` skips the SDK config entirely and fetches an access token via the OAuth2 `client_credentials` grant. A partial pair (only one of the two set, including the common CI pattern of an injected-but-empty secret) is forwarded as-is and fails fast with `requires both clientID and clientSecret`, instead of silently falling back to whatever SDK token happens to be on disk. The SDK-config flow above is used only when neither variable is present.
 
 Deploy a single file:
 
