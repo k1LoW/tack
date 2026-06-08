@@ -12,9 +12,17 @@
 
 ## Install
 
+**homebrew tap:**
+
+```console
+$ brew install k1LoW/tap/tack
+```
+
+**manually:**
+
 Download binary from [releases page](https://github.com/k1LoW/tack/releases).
 
-Or build from source:
+**go install:**
 
 ```console
 $ go install github.com/k1LoW/tack@latest
