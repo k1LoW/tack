@@ -1,6 +1,6 @@
 # tack
 
-`tack` is a minimal CLI for deploying a directory or a single file to [Tailor Platform](https://docs.tailor.tech/) [Static Website Hosting](https://docs.tailor.tech/guides/static-website-hosting.html).
+`tack` is a one-shot deploy CLI for [Tailor Platform](https://docs.tailor.tech/) [Static Website Hosting](https://docs.tailor.tech/guides/static-website-hosting.html).
 
 > [!IMPORTANT]
 > This is an **unofficial** and **experimental** tool.
