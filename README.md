@@ -9,11 +9,6 @@
 
 - One-shot deploy: `tack up <path>` and the site is live
 - Accepts a directory (uploaded recursively) or a single file
-- Auto-creates the Static Website on first run, reuses it on subsequent runs
-- Default Static Website name is `tack` so no extra config is needed
-- Parallel chunked upload via the streaming `UploadFile` RPC
-- Token auto-refresh via the Tailor SDK config (no separate login flow)
-- Single binary with no external dependencies
 
 ## Install
 
@@ -120,7 +115,7 @@ $ tack up ./dist --workspace-id <WORKSPACE_ID> --output json
 4. Walks the target path, sends every file through the streaming `UploadFile` RPC in parallel
 5. Calls `PublishDeployment` and prints the resulting URL
 
-Each `tack up` is a **full replacement** of whatever was previously published. The Tailor Platform stores files per deployment and Publish flips an active-deployment pointer — there is no partial update, so every run uploads the complete site.
+Each `tack up` is a **full replacement** of whatever was previously published. The Tailor Platform stores files per deployment and Publish flips an active-deployment pointer, so every run uploads the complete site.
 
 `.DS_Store`, `Thumbs.db`, and `desktop.ini` are skipped.
 

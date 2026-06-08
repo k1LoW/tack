@@ -51,7 +51,7 @@ func newListCmd() *cobra.Command {
 			case "json":
 				enc := json.NewEncoder(cmd.OutOrStdout())
 				enc.SetIndent("", "  ")
-				if items == nil {
+				if len(items) == 0 {
 					items = []*site.Settings{}
 				}
 				if err := enc.Encode(items); err != nil {
@@ -63,7 +63,7 @@ func newListCmd() *cobra.Command {
 	}
 	cmd.Flags().StringVar(&workspaceID, "workspace-id", "", "Tailor Platform workspace id (uuid)")
 	cmd.Flags().StringVarP(&output, "output", "o", "text", "output format: text or json")
-	_ = cmd.MarkFlagRequired("workspace-id")
+	cobra.CheckErr(cmd.MarkFlagRequired("workspace-id"))
 	return cmd
 }
 

@@ -70,6 +70,6 @@ func newSetCmd() *cobra.Command {
 	cmd.Flags().StringVar(&name, "name", defaultName, "static website name")
 	cmd.Flags().StringVarP(&output, "output", "o", "text", "output format: text or json")
 	cmd.Flags().StringSliceVar(&allowedIPs, "allowed-ip-addresses", nil, "IP/CIDR allowlist (comma-separated or repeated). Pass empty value to clear restrictions")
-	_ = cmd.MarkFlagRequired("workspace-id")
+	cobra.CheckErr(cmd.MarkFlagRequired("workspace-id"))
 	return cmd
 }

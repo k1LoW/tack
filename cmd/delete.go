@@ -79,7 +79,7 @@ func newDeleteCmd() *cobra.Command {
 	cmd.Flags().StringVar(&name, "name", defaultName, "static website name to delete")
 	cmd.Flags().StringVarP(&output, "output", "o", "text", "output format: text or json")
 	cmd.Flags().BoolVarP(&yes, "yes", "y", false, "skip confirmation prompt")
-	_ = cmd.MarkFlagRequired("workspace-id")
+	cobra.CheckErr(cmd.MarkFlagRequired("workspace-id"))
 	return cmd
 }
 
