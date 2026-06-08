@@ -38,6 +38,18 @@ $ tack up ./dist --workspace-id <WORKSPACE_ID>
 
 `tack` reads tokens from the [Tailor SDK](https://github.com/tailor-platform/sdk) config (`~/.config/tailor-platform/config.yaml`). When the access token is expired it is refreshed automatically.
 
+### Authenticate as a Platform machine user (CI / headless)
+
+For CI, batch jobs, and other headless environments, `tack` accepts Platform machine-user credentials via the same environment variables the Tailor SDK CLI uses for `tailor-sdk login --machineuser`:
+
+```console
+$ export TAILOR_PLATFORM_MACHINE_USER_CLIENT_ID=<client_id>
+$ export TAILOR_PLATFORM_MACHINE_USER_CLIENT_SECRET=<client_secret>
+$ tack up ./dist --workspace-id <WORKSPACE_ID>
+```
+
+When both variables are set, `tack` skips the SDK config entirely and fetches an access token via the OAuth2 `client_credentials` grant. Otherwise the user-mode SDK config flow above is used.
+
 Deploy a single file:
 
 ```console

@@ -10,7 +10,6 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	tailorclient "github.com/k1LoW/tailor-client-go"
 	"github.com/spf13/cobra"
 
 	"github.com/k1LoW/tack/internal/site"
@@ -35,7 +34,7 @@ func newListCmd() *cobra.Command {
 			}
 
 			ctx := cmd.Context()
-			client, err := tailorclient.New(ctx)
+			client, err := newTailorClient(ctx)
 			if err != nil {
 				return fmt.Errorf("init client: %w", err)
 			}
