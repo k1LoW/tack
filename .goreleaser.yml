@@ -48,9 +48,9 @@ archives:
     name_template: "{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     format_overrides:
       - goos: darwin
-        format: zip
+        formats: [zip]
       - goos: windows
-        format: zip
+        formats: [zip]
     files:
       - LICENSE
       - README.md
@@ -69,10 +69,10 @@ changelog:
 
 nfpms:
   - id: tack-nfpms
-    builds:
+    ids:
       - tack-linux
     maintainer: "Ken'ichiro Oyama <k1lowxb@gmail.com>"
-    description: "Deploy static websites to Tailor Platform"
+    description: "tack is a one-shot deploy CLI for Tailor Platform Static Website Hosting"
     license: MIT
     formats:
       - deb

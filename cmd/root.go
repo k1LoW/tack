@@ -32,7 +32,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:           "tack",
-	Short:         "Deploy static websites to Tailor Platform",
+	Short:         "tack is a one-shot deploy CLI for Tailor Platform Static Website Hosting",
 	Version:       fmt.Sprintf("%s (rev %s)", version.Version, version.Revision),
 	SilenceUsage:  true,
 	SilenceErrors: true,
