@@ -39,7 +39,7 @@ type DeployOptions struct {
 	Progress io.Writer
 }
 
-// DeployResult summarises a completed deploy.
+// DeployResult summarizes a completed deploy.
 type DeployResult struct {
 	Name         string `json:"name"`
 	WorkspaceID  string `json:"workspace_id"`
