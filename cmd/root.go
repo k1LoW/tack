@@ -26,11 +26,14 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+
+	"github.com/k1LoW/tack/version"
 )
 
 var rootCmd = &cobra.Command{
 	Use:           "tack",
 	Short:         "Deploy static websites to Tailor Platform",
+	Version:       fmt.Sprintf("%s (rev %s)", version.Version, version.Revision),
 	SilenceUsage:  true,
 	SilenceErrors: true,
 }
