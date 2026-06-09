@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net/url"
 	"os"
 	"regexp"
-	"strings"
 	"time"
 
 	tailorv1 "buf.build/gen/go/tailor-inc/tailor/protocolbuffers/go/tailor/v1"
@@ -101,16 +101,18 @@ func Deploy(ctx context.Context, client *tailorclient.Client, opts DeployOptions
 		return nil, fmt.Errorf("publish deployment: %w", err)
 	}
 
-	url := pubResp.Msg.GetUrl()
+	siteURL := pubResp.Msg.GetUrl()
 	if len(entries) == 1 && entries[0].RelPath != "index.html" {
-		url = strings.TrimRight(url, "/") + "/" + entries[0].RelPath
+		if u, err := url.Parse(siteURL); err == nil {
+			siteURL = u.JoinPath(entries[0].RelPath).String()
+		}
 	}
 
 	return &DeployResult{
 		Name:         opts.Name,
 		WorkspaceID:  opts.WorkspaceID,
 		DeploymentID: deploymentID,
-		URL:          url,
+		URL:          siteURL,
 		Files:        len(entries),
 	}, nil
 }
