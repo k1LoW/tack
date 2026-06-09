@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.2.1](https://github.com/k1LoW/tack/compare/v0.2.0...v0.2.1) - 2026-06-09
+
+### Other Changes
+- feat: include file path in returned URL for single-file uploads by @k1LoW in https://github.com/k1LoW/tack/pull/6
+
 ## [v0.2.0](https://github.com/k1LoW/tack/compare/v0.1.1...v0.2.0) - 2026-06-08
 
 ### New Features 🎉
