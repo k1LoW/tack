@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net/url"
 	"os"
 	"regexp"
 	"time"
@@ -100,11 +101,18 @@ func Deploy(ctx context.Context, client *tailorclient.Client, opts DeployOptions
 		return nil, fmt.Errorf("publish deployment: %w", err)
 	}
 
+	siteURL := pubResp.Msg.GetUrl()
+	if len(entries) == 1 && entries[0].RelPath != "index.html" {
+		if u, err := url.Parse(siteURL); err == nil {
+			siteURL = u.JoinPath(entries[0].RelPath).String()
+		}
+	}
+
 	return &DeployResult{
 		Name:         opts.Name,
 		WorkspaceID:  opts.WorkspaceID,
 		DeploymentID: deploymentID,
-		URL:          pubResp.Msg.GetUrl(),
+		URL:          siteURL,
 		Files:        len(entries),
 	}, nil
 }
