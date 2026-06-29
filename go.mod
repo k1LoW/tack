@@ -3,7 +3,7 @@ module github.com/k1LoW/tack
 go 1.26.1
 
 require (
-	buf.build/gen/go/tailor-inc/tailor/protocolbuffers/go v1.36.11-20260610081850-0008dc274593.1
+	buf.build/gen/go/tailor-inc/tailor/protocolbuffers/go v1.36.11-20260625081402-b182885fc035.1
 	connectrpc.com/connect v1.20.0
 	github.com/k1LoW/tailor-client-go v0.3.1
 	github.com/spf13/cobra v1.10.2
