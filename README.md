@@ -36,7 +36,7 @@ If you have already logged in with `npx tailor-sdk login`, just run:
 $ tack up ./dist --workspace-id <WORKSPACE_ID>
 ```
 
-`tack` reads tokens from the [Tailor SDK](https://github.com/tailor-platform/sdk) config (`~/.config/tailor-platform/config.yaml`). When the access token is expired it is refreshed automatically.
+`tack` reads tokens from the [Tailor SDK](https://github.com/tailor-platform/sdk) config (`~/.config/tailor-platform/config.yaml`). When the access token is expired it is refreshed automatically, and the refreshed token is written back to the SDK config (or the keyring, if the user is configured for keyring storage) so `tailor-sdk` and other tools stay in sync.
 
 ### Authenticate as a Platform machine user (CI / headless)
 

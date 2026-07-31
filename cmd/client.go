@@ -23,16 +23,21 @@ const (
 // grant; only when neither is present does it fall back to the SDK config
 // (`~/.config/tailor-platform/config.yaml`). Presence is checked with
 // os.LookupEnv (not os.Getenv) so that a CI runner injecting a missing
-// secret as an empty string still trips the machine-user branch — there,
+// secret as an empty string still trips the machine-user branch, where
 // tailor-client-go emits a clear "requires both clientID and clientSecret"
 // error instead of letting the helper silently fall through to whatever
 // SDK token happens to be on disk, which would risk deploying as the
 // wrong identity.
+//
+// WithTokenPersist is deliberately confined to the SDK-config branch:
+// tailor-client-go rejects it outright when combined with
+// WithClientCredentials, and machine-user grants issue no refresh token
+// for the writeback to carry anyway.
 func newTailorClient(ctx context.Context) (*tailorclient.Client, error) {
 	id, idSet := os.LookupEnv(envMachineUserClientID)
 	secret, secretSet := os.LookupEnv(envMachineUserClientSecret)
 	if idSet || secretSet {
 		return tailorclient.New(ctx, tailorclient.WithClientCredentials(id, secret))
 	}
-	return tailorclient.New(ctx)
+	return tailorclient.New(ctx, tailorclient.WithTokenPersist())
 }
