@@ -3,16 +3,16 @@ module github.com/k1LoW/tack
 go 1.26.1
 
 require (
-	buf.build/gen/go/tailor-inc/tailor/protocolbuffers/go v1.36.11-20260610081850-0008dc274593.1
+	buf.build/gen/go/tailor-inc/tailor/protocolbuffers/go v1.36.11-20260707035707-7d146e5779fa.1
 	connectrpc.com/connect v1.20.0
 	github.com/k1LoW/tailor-client-go v0.3.1
 	github.com/spf13/cobra v1.10.2
-	golang.org/x/sync v0.21.0
+	golang.org/x/sync v0.22.0
 )
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20250717185734-6c6e0d3c608e.1 // indirect
-	buf.build/gen/go/tailor-inc/tailor/connectrpc/go v1.20.0-20260610081850-0008dc274593.1 // indirect
+	buf.build/gen/go/tailor-inc/tailor/connectrpc/go v1.20.0-20260707035707-7d146e5779fa.1 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
 	github.com/goccy/go-yaml v1.19.2 // indirect
 	github.com/godbus/dbus/v5 v5.2.2 // indirect
