@@ -50,6 +50,20 @@ $ tack up ./dist --workspace-id <WORKSPACE_ID>
 
 When either variable is present, `tack` skips the SDK config entirely and fetches an access token via the OAuth2 `client_credentials` grant. A partial pair (only one of the two set, including the common CI pattern of an injected-but-empty secret) is forwarded as-is and fails fast with `requires both clientID and clientSecret`, instead of silently falling back to whatever SDK token happens to be on disk. The SDK-config flow above is used only when neither variable is present.
 
+### Target platform
+
+`tack` does not assume production. The platform endpoint is resolved in this order, highest precedence first:
+
+1. `TAILOR_PLATFORM_URL`, then `PLATFORM_URL`
+2. The platform recorded on the SDK config user key
+3. `https://api.tailor.tech`
+
+Step 2 is what makes a dev login work with no extra setup. SDK config v3 stores a non-production login under a platform-scoped key, so after `npx tailor-sdk login` against `https://api.dev.tailor.tech` your deploys go to that platform and the dev refresh token is never posted to production. Step 2 applies to the SDK-config flow only. The machine-user flow above never reads the config, so its endpoint comes from step 1 when the environment names one, and from step 3 otherwise.
+
+If the current user is registered for several non-production platforms the lookup is ambiguous and `tack` stops with an error. Set `TAILOR_PLATFORM_URL` to pick one.
+
+The OAuth2 `client_id` used for the `refresh_token` grant defaults to the Tailor SDK's own, and honors `TAILOR_PLATFORM_OAUTH2_CLIENT_ID`, then `PLATFORM_OAUTH2_CLIENT_ID`.
+
 Deploy a single file:
 
 ```console
