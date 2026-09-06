@@ -58,7 +58,7 @@ When either variable is present, `tack` skips the SDK config entirely and fetche
 2. The platform recorded on the SDK config user key
 3. `https://api.tailor.tech`
 
-Step 2 is what makes a dev login work with no extra setup. Since SDK config v3 a non-production login is stored under a platform-scoped key, so after `npx tailor-sdk login` against `https://api.dev.tailor.tech` your `tack` runs go to that platform and the dev refresh token is never posted to production. It applies to the SDK-config flow only; the machine-user flow above never reads the config, so it falls through to step 3.
+Step 2 is what makes a dev login work with no extra setup. SDK config v3 stores a non-production login under a platform-scoped key, so after `npx tailor-sdk login` against `https://api.dev.tailor.tech` your deploys go to that platform and the dev refresh token is never posted to production. Step 2 applies to the SDK-config flow only. The machine-user flow above never reads the config, so its endpoint comes from step 1 when the environment names one, and from step 3 otherwise.
 
 If the current user is registered for several non-production platforms the lookup is ambiguous and `tack` stops with an error. Set `TAILOR_PLATFORM_URL` to pick one.
 
