@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.4.0](https://github.com/k1LoW/tack/compare/v0.3.0...v0.4.0) - 2026-09-06
+
+### New Features 🎉
+- feat: resolve the target platform from the SDK config (tailor-client-go v0.4.0) by @k1LoW in https://github.com/k1LoW/tack/pull/20
+### Dependency Updates ⬆️
+- chore(deps): bump Songmu/tagpr from 1.20.1 to 1.20.2 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/tack/pull/19
+
 ## [v0.3.0](https://github.com/k1LoW/tack/compare/v0.2.1...v0.3.0) - 2026-07-31
 
 ### Dependency Updates ⬆️
