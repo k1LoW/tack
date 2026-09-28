@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.4.1](https://github.com/k1LoW/tack/compare/v0.4.0...v0.4.1) - 2026-09-28
+
+### Other Changes
+- ci: generate CREDITS with gocredits v1.0.0 from a make target by @k1LoW in https://github.com/k1LoW/tack/pull/24
+
 ## [v0.4.0](https://github.com/k1LoW/tack/compare/v0.3.0...v0.4.0) - 2026-09-06
 
 ### New Features 🎉
